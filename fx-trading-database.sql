@@ -8,85 +8,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Database: `fx_trading_core`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_users`
---
---
-
-CREATE TABLE IF NOT EXISTS `admin_users` (
-  `user_id` int(11) NOT NULL auto_increment,
-  `invited_by` int(11) NOT NULL,
-  `institution_id` int(11) default NULL,
-  `is_institution_admin` tinyint(1) NOT NULL,
-  `child_of_id` int(11) default NULL,
-  `user_photo` varchar(256) NOT NULL,
-  `first_name` varchar(128) default NULL,
-  `middle_name` varchar(64) NOT NULL,
-  `last_name` varchar(128) default NULL,
-  `title` varchar(32) default NULL,
-  `position` varchar(128) NOT NULL,
-  `desk` varchar(32) default NULL,
-  `email` varchar(128) NOT NULL,
-  `username` varchar(32) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `salt` varchar(3) NOT NULL,
-  `address_1` varchar(128) default NULL,
-  `address_2` varchar(128) default NULL,
-  `city` varchar(64) default NULL,
-  `state_providence` varchar(64) default NULL,
-  `postal_code` varchar(32) default NULL,
-  `country_code` varchar(2) default NULL,
-  `phone_1` varchar(32) default NULL,
-  `phone_2` varchar(32) default NULL,
-  `fax` varchar(32) default NULL,
-  `cell_area_code` int(4) default NULL,
-  `cell_pre_fix` int(3) default NULL,
-  `cell_last_four` int(5) default NULL,
-  `signup_ip_address` varchar(16) default NULL,
-  `activation_date` datetime NOT NULL,
-  `creation_date` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  `modification_date` datetime NOT NULL,
-  `lastlogin_date` datetime NOT NULL,
-  `lastlogout_date` datetime NOT NULL,
-  `remember_me` tinyint(1) NOT NULL,
-  `is_hidden` tinyint(1) NOT NULL,
-  `is_confirmed` tinyint(1) NOT NULL,
-  `is_active` tinyint(1) NOT NULL,
-  `is_private` tinyint(1) NOT NULL,
-  `filter_id` int(11) default NULL,
-  `is_name_private` tinyint(1) default NULL,
-  `is_email_private` tinyint(1) default NULL,
-  `is_username_private` tinyint(1) NOT NULL,
-  `is_email_domain_private` tinyint(1) NOT NULL,
-  `is_company_name_private` tinyint(1) default NULL,
-  `is_position_private` tinyint(1) NOT NULL,
-  `is_address_private` tinyint(1) NOT NULL,
-  `is_desk_private` tinyint(1) default NULL,
-  `is_phone_1_private` tinyint(1) NOT NULL,
-  `is_phone_2_private` tinyint(1) NOT NULL,
-  `is_fax_private` tinyint(1) NOT NULL,
-  `is_cell_private` tinyint(1) NOT NULL,
-  `is_personal_email_private` tinyint(1) NOT NULL,
-  `region_id` int(11) default NULL,
-  `ranking` int(4) default NULL,
-  `personal_emails` varchar(128) default NULL,
-  `asset_class` varchar(32) default NULL,
-  `company_type` varchar(32) default NULL,
-  PRIMARY KEY  (`user_id`),
-  KEY `filter_id` (`filter_id`),
-  KEY `institution_id` (`institution_id`),
-  KEY `invited_by` (`invited_by`),
-  KEY `child_of_id` (`child_of_id`)
-) ;
-
---
--- Dumping data for table `admin_users`
---
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `asset`
 --
@@ -189,41 +110,6 @@ CREATE TABLE IF NOT EXISTS `atomic_market` (
   KEY `market_id` (`market_id`)
 ) ;
 
---
--- Dumping data for table `atomic_market`
---
-
-INSERT INTO `atomic_market` (`atomic_market_id`, `market_id`, `user_id`, `institution_id`, `parent_id`, `internal_id`, `version`, `atomic_market_name`, `atomic_market_description`, `instrument_name`, `instrument_description`, `keyword`, `market_definition`, `performance`, `status`, `allowBidOfferLimitOrder`, `allowBuySellLimitIocOrder`, `allowBuySellFillOrKillOrder`, `allowIcebergOrder`, `allowBuySellStopLimitOrder`, `dealing_data_qualifier_id`, `dealing_data_transparency_id`, `market_book_data_transparency_id`, `market_type_id`, `asset_id`, `take_price_defined_as_id`, `perTradeUnit`, `pipsEnd`, `typicalSpread`, `wideSpread`, `marketThreshold`, `typicalPrice`, `pipGranularity`, `separatePips`, `pipsStart`, `inputDifferentToDisplay`, `pipsInputStart`, `allPipsMustBeEntered`, `commodityTraded_name`, `commodityTraded_description`, `commodityTraded_decimalPlaces`, `commodityTraded_scaleFactor`, `commodityTraded_lotSizeName`, `commodityTraded_lotSizeNameShort`, `commodityTraded_measurement_type_id`, `commodityTraded_increment`, `commodityTraded_maximum`, `commodityTraded_minimum`, `commodityPayment_name`, `commodityPayment_description`, `commodityPayment_decimalPlaces`, `commodityPayment_scaleFactor`, `commodityPayment_lotSizeName`, `commodityPayment_lotSizeNameShort`, `commodityPayment_measurement_type_id`, `commodityPayment_increment`, `commodityPayment_maximum`, `commodityPayment_minimum`, `is_complete`, `is_active`, `creation_date`, `modification_date`, `market_data_id`, `filter_id`, `markedForDeletion`) VALUES
-(3, 2, 1, 0, 0, 0, 1, 'USD/MXN', '', 'USD/MXN', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.050, 0.003, 10.9319, 1, 1, 2, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'MXN', 'Mexican Peso', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-04-30 12:22:13', '2008-04-30 12:22:13', 0, 0, 1),
-(18, 9, 1, 0, 0, 0, 1, 'Subi GBP/CHF', '', 'GBP/CHF', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.005, 0.003, 2.4560, 1, 1, 3, 0, 2, 0, 'GBP', 'British Pound Sterling', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'CHF', 'Swiss Franc', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:10:45', '2008-05-06 17:10:45', 0, 0, 0),
-(19, 9, 1, 0, 0, 0, 1, 'Subi GBP/JPY', '', 'GBP/JPY', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 2, 0.002, 0.500, 0.003, 241.1500, 1, 1, 1, 0, 2, 0, 'GBP', 'British Pound Sterling', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'JPY', 'Japanese Yen', 0, 9, 'billion', 'bil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:10:45', '2008-05-06 17:10:45', 0, 0, 0),
-(20, 9, 1, 0, 0, 0, 1, 'Subi GBP/USD', '', 'GBP/USD', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.003, 0.003, 1.9724, 1, 1, 3, 0, 2, 0, 'GBP', 'British Pound Sterling', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:10:45', '2008-05-06 17:10:45', 0, 0, 0),
-(21, 9, 1, 0, 0, 0, 1, 'USD/CAD', '', 'USD/CAD', '', NULL, '', '', 'test', 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1.00, 4, 0.002, 0.003, 0.003, 1.0676, 1, 0, 0, 0, 0, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'CAD', 'Canadian Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 16:49:19', '2008-05-06 16:49:19', 0, 0, 0),
-(9, 7, 1, 0, 0, 0, 1, 'AUD/JPY', '', 'AUD/JPY', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 2, 0.002, 0.300, 0.003, 97.7600, 1, 1, 1, 0, 2, 0, 'AUD', 'Australian Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'JPY', 'Japanese Yen', 0, 9, 'billion', 'bil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-01 18:00:03', '2008-05-01 18:00:03', 0, 0, 1),
-(23, 10, 1, 0, 0, 0, 1, 'Subi USD/ZAR', '', 'USD/ZAR', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.050, 0.003, 7.4200, 1, 1, 2, 0, 1, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'ZAR', 'South African Rand', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:14:35', '2008-05-06 17:14:35', 0, 0, 0),
-(22, 9, 1, 0, 0, 0, 1, 'GBP/CHF', '', 'GBP/CHF', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.005, 0.003, 2.4560, 1, 1, 3, 0, 2, 0, 'GBP', 'British Pound Sterling', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'CHF', 'Swiss Franc', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 16:50:41', '2008-05-06 16:50:41', 0, 0, 0),
-(12, 5, 1, 0, 0, 0, 1, 'AUD/NZD', '', 'AUD/NZD', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.002, 0.003, 1.1145, 1, 1, 3, 0, 2, 0, 'AUD', 'Australian Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'NZD', 'New Zealand Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 14:57:45', '2008-05-06 14:57:45', 0, 0, 1),
-(14, 9, 1, 0, 0, 0, 1, 'EUR/CHF', '', 'EUR/CHF', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.002, 0.003, 1.6551, 1, 1, 3, 0, 2, 0, 'EUR', 'Currency of the European Union', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'CHF', 'Swiss Franc', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 16:42:02', '2008-05-06 16:42:02', 0, 0, 0),
-(15, 9, 1, 0, 0, 0, 1, 'EUR/GBP', '', 'EUR/GBP', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 5, 0.002, 0.003, 0.003, 0.6864, 2, 1, 3, 0, 2, 0, 'EUR', 'Currency of the European Union', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'GBP', 'British Pound Sterling', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 16:43:12', '2008-05-06 16:43:12', 0, 0, 0),
-(16, 9, 1, 0, 0, 0, 1, 'EUR/JPY', '', 'EUR/JPY', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 2, 0.002, 0.300, 0.003, 162.7100, 1, 1, 1, 0, 2, 0, 'EUR', 'Currency of the European Union', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'JPY', 'Japanese Yen', 0, 9, 'billion', 'bil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 16:43:12', '2008-05-06 16:43:12', 0, 0, 0),
-(17, 9, 1, 0, 0, 0, 1, 'EUR/USD', '', 'EUR/USD', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.003, 0.003, 1.3293, 1, 1, 3, 0, 2, 0, 'EUR', 'Currency of the European Union', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 16:43:12', '2008-05-06 16:43:12', 0, 0, 0),
-(24, 10, 1, 0, 0, 0, 1, 'Subi USD/TRY', '', 'USD/TRY', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.010, 0.003, 1.3128, 1, 1, 3, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'TRY', 'Turkish Lira', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:14:35', '2008-05-06 17:14:35', 0, 0, 0),
-(25, 10, 1, 0, 0, 0, 1, 'Subi USD/THB', '', 'USD/THB', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 2, 0.002, 0.300, 0.003, 32.9200, 1, 1, 1, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'THB', 'Thai Baht', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:14:35', '2008-05-06 17:14:35', 0, 0, 0),
-(26, 10, 1, 0, 0, 0, 1, 'USD/RUB', '', 'USD/RUB', '', NULL, '', '', 'test', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 16843009, 1.00, 4, 0.002, 0.050, 0.003, 26.8050, 127, 1, 127, 1, 127, 1, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'RUB', 'Russian Ruble', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 16:54:08', '2008-05-06 16:54:08', 0, 0, 1),
-(27, 11, 1, 0, 0, 0, 1, 'USD/MXN', '', 'USD/MXN', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.050, 0.003, 10.9319, 1, 1, 2, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'MXN', 'Mexican Peso', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:01:24', '2008-05-06 17:01:24', 0, 0, 0),
-(28, 11, 1, 0, 0, 0, 1, 'USD/CAD', '', 'USD/CAD', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.003, 0.003, 1.0676, 1, 1, 3, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'CAD', 'Canadian Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:01:24', '2008-05-06 17:01:24', 0, 0, 0),
-(29, 12, 1, 0, 0, 0, 1, 'USD/JPY', '', 'USD/JPY', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 2, 0.002, 0.300, 0.003, 122.4100, 1, 1, 1, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'JPY', 'Japanese Yen', 0, 9, 'billion', 'bil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:03:48', '0000-00-00 00:00:00', 0, 0, 0),
-(30, 12, 1, 0, 0, 0, 1, 'USD/HKD', '', 'USD/HKD', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.003, 0.003, 7.8167, 1, 1, 3, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'HKD', 'Hong Kong Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:03:48', '0000-00-00 00:00:00', 0, 0, 0),
-(31, 12, 1, 0, 0, 0, 1, 'USD/SGD', '', 'USD/SGD', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.003, 0.003, 1.5471, 1, 1, 3, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'SGD', 'Singapore Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:03:48', '0000-00-00 00:00:00', 0, 0, 0),
-(32, 13, 1, 0, 0, 0, 1, 'EUR/DKK', '', 'EUR/DKK', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.005, 0.003, 7.4544, 1, 1, 3, 0, 2, 0, 'EUR', 'Currency of the European Union', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'DKK', 'Danish Krone', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:06:21', '0000-00-00 00:00:00', 0, 0, 0),
-(33, 13, 1, 0, 0, 0, 1, 'EUR/SEK', '', 'EUR/SEK', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.005, 0.003, 9.3986, 1, 1, 3, 0, 2, 0, 'EUR', 'Currency of the European Union', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'SEK', 'Swedish Krona', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:06:21', '0000-00-00 00:00:00', 0, 0, 0),
-(34, 13, 1, 0, 0, 0, 1, 'EUR/NOK', '', 'EUR/NOK', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.005, 0.003, 8.0902, 1, 1, 3, 0, 2, 0, 'EUR', 'Currency of the European Union', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'NOK', 'Norwegian Krone', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-06 17:06:21', '0000-00-00 00:00:00', 0, 0, 0),
-(36, 15, 1, 0, 0, 0, 1, 'USD/MXN', '', 'USD/MXN', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.050, 0.003, 10.9319, 1, 1, 2, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'MXN', 'Mexican Peso', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-13 12:34:48', '0000-00-00 00:00:00', 0, 0, 0),
-(37, 15, 1, 0, 0, 0, 1, 'USD/RUB', '', 'USD/RUB', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.050, 0.003, 26.8050, 1, 1, 1, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'RUB', 'Russian Ruble', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-13 12:34:48', '0000-00-00 00:00:00', 0, 0, 0),
-(38, 16, 1, 0, 0, 0, 1, 'GBP/CHF', '', 'GBP/CHF', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 4, 0.002, 0.005, 0.003, 2.4560, 1, 1, 3, 0, 2, 0, 'GBP', 'British Pound Sterling', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'CHF', 'Swiss Franc', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-13 12:51:32', '0000-00-00 00:00:00', 0, 0, 0),
-(39, 17, 1, 0, 0, 0, 1, 'CHF/JPY', '', 'CHF/JPY', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 2, 0.002, 0.300, 0.003, 98.4100, 1, 1, 1, 0, 2, 0, 'CHF', 'Swiss Franc', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'JPY', 'Japanese Yen', 0, 9, 'billion', 'bil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-13 14:18:11', '0000-00-00 00:00:00', 0, 0, 0),
-(40, 18, 1, 0, 0, 0, 1, 'EUR/GBP', '', 'EUR/GBP', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 5, 0.002, 0.003, 0.003, 0.6864, 2, 1, 3, 0, 2, 0, 'EUR', 'Currency of the European Union', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'GBP', 'British Pound Sterling', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-13 14:20:48', '0000-00-00 00:00:00', 0, 0, 0),
-(42, 24, 1, 0, 0, 0, 1, 'USD/JPY', '', 'USD/JPY', '', NULL, '', '', 'test', 1, 0, 0, 0, 0, 2, 3, 4, 1, 1, 3, 1.00, 2, 0.002, 0.300, 0.003, 122.4100, 1, 1, 1, 0, 2, 0, 'USD', 'United States Dollar', 2, 6, 'millions', 'mil', 0, 1.000, 99.999, 1.000, 'JPY', 'Japanese Yen', 0, 9, 'billion', 'bil', 0, 1.000, 99.999, 1.000, 0, 0, '2008-05-13 15:00:47', '2008-05-13 15:00:47', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -242,7 +128,6 @@ CREATE TABLE IF NOT EXISTS `commodity` (
 --
 -- Dumping data for table `commodity`
 --
-
 
 -- --------------------------------------------------------
 
@@ -276,16 +161,6 @@ CREATE TABLE IF NOT EXISTS `component` (
 --
 -- Dumping data for table `component`
 --
-
-INSERT INTO `component` (`component_id`, `name`, `type`, `region_id`, `MKD_component_id`, `note`, `max_bandwidth`, `min_bandwidth`, `ip_address`, `status`, `creation_date`, `modification_date`) VALUES
-(1, 'ARM001', 'ARM', 1, 6, '', 0, 0, '', '', '2008-03-31 16:02:22', '0000-00-00 00:00:00'),
-(2, 'ARM002', 'ARM', 1, 6, '', NULL, NULL, '', '', '2008-03-31 16:03:10', '0000-00-00 00:00:00'),
-(3, 'DAD001', 'DAD', 1, 6, '', NULL, NULL, '', '', '2008-03-31 16:03:53', '0000-00-00 00:00:00'),
-(4, 'ORP001', 'ORP', 1, 6, '', NULL, NULL, '', '', '2008-03-31 16:04:31', '0000-00-00 00:00:00'),
-(5, 'ORP002', 'ORP', 1, 6, '', NULL, NULL, '', '', '2008-03-31 16:05:03', '0000-00-00 00:00:00'),
-(6, 'MKD001', 'MKD', 1, 6, '', NULL, NULL, '', '', '2008-03-31 16:07:29', '0000-00-00 00:00:00'),
-(7, 'ARM003', 'ARM', 2, 8, '', NULL, NULL, '', '', '2008-04-01 14:50:46', '0000-00-00 00:00:00');
-
 -- --------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `dealing_data_transparency` (
@@ -307,7 +182,6 @@ CREATE TABLE IF NOT EXISTS `dealing_data_transparency` (
 -- Table structure for table `deals`
 --
 
-
 CREATE TABLE IF NOT EXISTS `deals` (
   `deal_id` int(11) NOT NULL auto_increment,
   `order_buy_id` int(11) default NULL,
@@ -326,7 +200,6 @@ CREATE TABLE IF NOT EXISTS `deals` (
 
 
 -- --------------------------------------------------------
-
 
 --
 -- Table structure for table `institution_types`
@@ -634,9 +507,6 @@ INSERT INTO `take_price_defined_as` (`take_price_defined_as_id`, `name`, `descri
 (3, 'worst Price Obtained', 'orst Price Obtained', '2008-04-15 18:57:49', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
-
-
-
 
 --
 -- Table structure for table `traders`

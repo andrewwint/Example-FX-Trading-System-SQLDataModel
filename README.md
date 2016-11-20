@@ -1,5 +1,7 @@
 # fx-trading-database
 
+** This is for learning purposes only **
+
 ## Database Table
 This database was designed for insititional trading for FX currency trading, key tables too look at are:
 
