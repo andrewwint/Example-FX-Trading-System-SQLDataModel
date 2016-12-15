@@ -13,45 +13,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `asset`
 --
 --
-=======
-CREATE TABLE IF NOT EXISTS `admin_users` (
-  `user_id` int(11) NOT NULL auto_increment,
-  `invited_by` int(11) NOT NULL,
-  `institution_id` int(11) default NULL,
-  `is_institution_admin` tinyint(1) NOT NULL,
-  `child_of_id` int(11) default NULL,
-  `user_photo` varchar(256) NOT NULL,
-  `first_name` varchar(128) default NULL,
-  `middle_name` varchar(64) NOT NULL,
-  `last_name` varchar(128) default NULL,
-  `title` varchar(32) default NULL,
-  `position` varchar(128) NOT NULL,
-  `desk` varchar(32) default NULL,
-  `email` varchar(128) NOT NULL,
-  `username` varchar(32) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `salt` varchar(3) NOT NULL,
-  `address_1` varchar(128) default NULL,
-  `address_2` varchar(128) default NULL,
-  `city` varchar(64) default NULL,
-  `state_providence` varchar(64) default NULL,
-  `postal_code` varchar(32) default NULL,
-  `country_code` varchar(2) default NULL,
-  `phone_1` varchar(32) default NULL,
-  `phone_2` varchar(32) default NULL,
-  `fax` varchar(32) default NULL,
-  `cell_area_code` int(4) default NULL,
-  `cell_pre_fix` int(3) default NULL,
-  `cell_last_four` int(5) default NULL,
-  `signup_ip_address` varchar(16) default NULL,
-  `activation_date` datetime NOT NULL,
-  `creation_date` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  `modification_date` datetime NOT NULL,
-  `lastlogin_date` datetime NOT NULL,
-  `lastlogout_date` datetime NOT NULL,
-  `remember_me` tinyint(1) NOT NULL,
-  `is_hidden` tinyint(1) NOT NULL,
->>>>>>> f2dd55b7e210af60350e0f2ca5c0ec56a4b7f22e
+
 
 CREATE TABLE IF NOT EXISTS `asset` (
   `asset_id` int(11) NOT NULL auto_increment,
@@ -150,10 +112,6 @@ CREATE TABLE IF NOT EXISTS `atomic_market` (
   KEY `market_id` (`market_id`)
 ) ;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f2dd55b7e210af60350e0f2ca5c0ec56a4b7f22e
 -- --------------------------------------------------------
 
 --
