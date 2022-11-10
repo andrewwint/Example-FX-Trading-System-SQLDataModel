@@ -1,4 +1,4 @@
-# fx-trading-database
+# FX Trading System Database and Tables
 
 **This is for learning purposes only**
 
