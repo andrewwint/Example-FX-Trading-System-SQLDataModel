@@ -16,6 +16,7 @@ This database was designed for insititional trading for FX currency trading, key
 * market_book_data_transparency
 * orders
 
+<img src="./table-diagram.png" />
 
 ## Store Procedures Used
 These are the stored procedures used in the application, they are 15 all together
