@@ -8,7 +8,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Database: `fx_trading_core`
 --
 
-<<<<<<< HEAD
+
 --
 -- Table structure for table `asset`
 --
@@ -557,7 +557,7 @@ CREATE TABLE IF NOT EXISTS `trading_floors` (
 --
 -- Table structure for table `trading_groups`
 --
--
+
 
 CREATE TABLE IF NOT EXISTS `trading_groups` (
   `trading_group_id` int(11) NOT NULL auto_increment,
