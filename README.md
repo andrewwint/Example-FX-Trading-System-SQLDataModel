@@ -19,7 +19,10 @@ This database was designed for insititional trading for FX currency trading, key
 <img src="./table-diagram.png" />
 
 ## Store Procedures Used
-These are the stored procedures used in the application, they are 15 all together
+These are the stored procedures used in the application; they are 15 altogether. Benchmarking all your queries using `EXPLAIN` while developing your queries to ensure performance is essential. [EXPLAIN Statement](https://dev.mysql.com/doc/refman/8.0/en/explain.html).
+
+## Performance
+Define an execution time for all your queries. For example, all database calls should return within x to y milliseconds without caching. Hence, stored procedures and functions encapsulating logic and executing multiple queries are used extremely fast since they improve performance by taking advantage of precompilation and reducing network overhead. For a deep dive into performance, become familiar with [Roy Fielding, Network-based Application Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/net_app_arch.htm)
 
 > stored-procedures.sql
 
